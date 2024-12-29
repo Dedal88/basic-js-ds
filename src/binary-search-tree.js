@@ -6,14 +6,24 @@ const { NotImplementedError } = require('../extensions/index.js');
  * Implement simple binary search tree according to task description
  * using Node from extensions
  */
+
+// class NodeTree {
+//   constructor(data) {
+//     this.value = data;
+//     this.left = null;
+//     this.right = null;
+//   }
+// }
 class BinarySearchTree {
   constructor() {
     this.root = null;
   }
 
   root() {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
+    if (!this.root) {
+      return;
+    }
+    return this.root;
   }
 
   add(data) {
@@ -59,9 +69,22 @@ class BinarySearchTree {
     }
   }
 
-  find(/* data */) {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
+  find(data) {
+    return findWithin(this.root, data);
+
+    function findWithin(node, value) {
+      if (!node) {
+        return null;
+      }
+
+      if (node.value === value) {
+        return node;
+      }
+
+      return value < node.value
+        ? findWithin(node.left, value)
+        : findWithin(node.right, value);
+    }
   }
 
   remove(data) {
@@ -111,13 +134,27 @@ class BinarySearchTree {
   }
 
   min() {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
+    if (!this.root) {
+      return;
+    }
+
+    let node = this.root;
+    while (node.left) {
+      node = node.left;
+    }
+    return node.value;
   }
 
   max() {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
+    if (!this.root) {
+      return;
+    }
+
+    let node = this.root;
+    while (node.right) {
+      node = node.right;
+    }
+    return node.value;
   }
 }
 
