@@ -13,9 +13,6 @@ class BinarySearchTree {
   }
 
   root() {
-    // if (!this.rootTree) {
-    //   return null;
-    // }
     return this.rootTree;
   }
 
