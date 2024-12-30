@@ -29,7 +29,7 @@ class Node {
     this.next = null;
   }
 }
-// l &&
+
 function removeKFromList(l, k) {
   while (l && l.value === k) {
     l = l.next;
